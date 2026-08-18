@@ -620,3 +620,48 @@ h1,h2,h3,p{margin-top:0}h1{font-size:clamp(3rem,5.7vw,5.5rem);line-height:.98;le
 .branded-categories .category-card.category-card-photo > h3,
 .branded-categories .category-card.category-card-photo > p{position:relative;z-index:2}
 .branded-categories .category-card.category-card-photo::after{position:relative;z-index:2}
+
+
+/* Hero — Guia Como escolher um painel LED */
+.page-hero.page-hero-led{
+  position:relative;
+  overflow:hidden;
+  padding:110px 0 105px;
+  background:
+    linear-gradient(90deg,
+      rgba(2,8,5,.96) 0%,
+      rgba(2,8,5,.88) 34%,
+      rgba(2,8,5,.48) 66%,
+      rgba(2,8,5,.22) 100%
+    ),
+    url("../img/hero-como-escolher-painel-led.webp") center 42% / cover no-repeat;
+}
+
+.page-hero.page-hero-led .container{
+  position:relative;
+  z-index:1;
+}
+
+.page-hero.page-hero-led h1{
+  max-width:760px;
+  text-shadow:0 3px 24px rgba(0,0,0,.72);
+}
+
+.page-hero.page-hero-led p{
+  max-width:720px;
+  color:#d8e1da;
+  text-shadow:0 2px 14px rgba(0,0,0,.85);
+}
+
+@media(max-width:620px){
+  .page-hero.page-hero-led{
+    padding:78px 0 72px;
+    background:
+      linear-gradient(90deg,
+        rgba(2,8,5,.94) 0%,
+        rgba(2,8,5,.78) 65%,
+        rgba(2,8,5,.55) 100%
+      ),
+      url("../img/hero-como-escolher-painel-led.webp") 64% center / cover no-repeat;
+  }
+}
