@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900">
+  <defs>
+    <radialGradient id="g1" cx="15%" cy="25%" r="70%"><stop offset="0" stop-color="#1db954" stop-opacity=".30"/><stop offset=".58" stop-color="#0b2417" stop-opacity=".12"/><stop offset="1" stop-color="#020805" stop-opacity="0"/></radialGradient>
+    <linearGradient id="g2" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#09190f"/><stop offset="1" stop-color="#020604"/></linearGradient>
+    <filter id="blur"><feGaussianBlur stdDeviation="18"/></filter>
+  </defs>
+  <rect width="1600" height="900" fill="url(#g2)"/>
+  <circle cx="220" cy="180" r="520" fill="url(#g1)"/>
+  <g opacity=".20" fill="none" stroke="#72ff6a" stroke-width="2">
+    <path d="M920 150h410l120 120-120 120H920l-120-120z"/>
+    <path d="M1040 290h330l90 90-90 90h-330l-90-90z"/>
+    <circle cx="1130" cy="560" r="150"/><circle cx="1130" cy="560" r="82"/>
+    <path d="M1020 560h220M1130 450v220"/>
+  </g>
+  <g opacity=".18" filter="url(#blur)" fill="#7cff72">
+    <circle cx="1340" cy="180" r="54"/><circle cx="1440" cy="350" r="30"/><circle cx="980" cy="720" r="42"/>
+  </g>
+  <g opacity=".08" stroke="#a8ff9f" stroke-width="1">
+    <path d="M0 720h1600M0 780h1600M0 840h1600"/>
+    <path d="M1230 0v900M1320 0v900M1410 0v900M1500 0v900"/>
+  </g>
+</svg>

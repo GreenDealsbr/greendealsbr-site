@@ -1,0 +1,26 @@
+GREEN DEALS BR — V7 — 17/08/2026
+
+OBJETIVO
+Refinar a V6 sem reconstruir o site: mais clareza sobre o problema resolvido, navegação mais comercial e página própria de Comparativos.
+
+ALTERAÇÕES PRINCIPAIS
+- Comparativos incluído no menu principal.
+- Metodologia removida do menu principal, mas mantida no site e no rodapé.
+- Nova página comparativos.html, sem dados ou produtos fictícios.
+- Home ganhou seção curta: “Comprar equipamento não deveria ser um jogo de sorte.”
+- CTA secundário do hero agora leva a Comparativos.
+- Link do card “Comparativos objetivos” corrigido.
+- Copy do nicho ampliada para cultivo indoor, jardinagem técnica e automação.
+- Guias separado de Comparativos.
+- Taxonomia ajustada em categorias.
+- Texto de afiliados revisado para não sugerir aprovação em programas ainda não concluídos.
+- Política de Privacidade atualizada em 17/08/2026.
+- sitemap.xml e _redirects atualizados.
+
+PUBLICAÇÃO
+Faça upload do CONTEÚDO desta pasta no Cloudflare Pages como novo deployment.
+Teste primeiro o endereço pages.dev gerado.
+Somente após validação, mantenha/promova o deployment como produção e conecte o domínio oficial.
+
+IMPORTANTE
+Esta versão não contém ofertas, preços, cupons ou avaliações fictícias.

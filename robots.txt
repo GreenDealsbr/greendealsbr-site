@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://greendealsbr.com.br/sitemap.xml

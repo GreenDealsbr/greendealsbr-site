@@ -1,0 +1,15 @@
+GREEN DEALS BR — VERSÃO V4 CORRIGIDA
+
+Mudanças visíveis aplicadas:
+- novo Hero com headline e texto reformulados;
+- remoção dos três bullets inferiores do Hero;
+- carrossel editorial funcional no lado direito;
+- selo reposicionado no Hero;
+- remoção dos numerais dos três cards de conteúdo;
+- categorias com ícones próprios da identidade;
+- remoção dos numerais da metodologia;
+- WhatsApp, Telegram e Instagram como links diretos;
+- rodapé com e-mail, WhatsApp, Telegram, Instagram e site;
+- layout e CSS específicos identificados como V4.
+
+Envie este ZIP em um novo deployment no Cloudflare Pages.

@@ -1,0 +1,17 @@
+GREEN DEALS BR — VERSÃO FINAL CATEGORIAS FOTOGRÁFICAS
+
+Base: V7.1 aprovada.
+Alteração única de design: seção “Um recorte claro do mercado”.
+
+- 6 fotografias individuais, uma por categoria.
+- Texto, ícones e links permanecem em HTML.
+- Fade/overlay escuro aplicado por CSS para legibilidade.
+- Nenhuma outra seção da V7.1 foi redesenhada.
+
+Categorias:
+1. Iluminação LED
+2. Ventilação e climatização
+3. Vasos e substratos
+4. Irrigação
+5. Automação
+6. Monitoramento

@@ -1,0 +1,16 @@
+GREEN DEALS BR — V5 FINAL
+
+Refinos aplicados conforme os prints:
+- cabeçalho corrigido: logo e nome sem slogan cortado;
+- Hero com arte botânica nova e exclusiva para o site;
+- ícones e textos editoriais movidos para o carrossel abaixo da arte;
+- conteúdo inicial mantido;
+- categorias com uma segunda família de ícones minimalistas;
+- bloco repetitivo de guias removido da página inicial;
+- metodologia mantida;
+- bloco de canais mantido;
+- aviso de afiliados completo exibido na própria página;
+- rodapé mantido com contatos e canais;
+- demais páginas institucionais preservadas.
+
+Publicar como um NOVO deployment no Cloudflare Pages.

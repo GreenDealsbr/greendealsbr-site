@@ -1,0 +1,11 @@
+GREEN DEALS BR — V7.1
+
+Correções e melhorias:
+- Corrigido loop de redirecionamento em Comparativos (ERR_TOO_MANY_REDIRECTS).
+- Mantida a Home/hero original da V7 sem alteração visual.
+- Criados 6 backgrounds SVG exclusivos e leves para as seções a partir do segundo bloco:
+  problema, conteúdo editorial, categorias, metodologia, comunidade e transparência.
+- Adicionado movimento visual sutil via CSS, desativado automaticamente para usuários com redução de movimento.
+- Aplicado tratamento glass/overlay para preservar contraste e legibilidade.
+- Mantidos aliases úteis /privacidade, /termos e /afiliados e fallback 404.
+- Revisados links internos e âncoras.

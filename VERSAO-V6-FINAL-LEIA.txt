@@ -1,0 +1,7 @@
+GREEN DEALS BR — V6 FINAL
+
+Último ajuste aplicado:
+- removido somente o logo sobreposto da arte botânica do Hero;
+- todo o restante da V5 foi preservado sem alterações.
+
+Publique este ZIP como um novo deployment no Cloudflare Pages.

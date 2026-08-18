@@ -1,0 +1,8 @@
+GREEN DEALS BR — V7.2.3
+
+Correção específica dos cards fotográficos de “Um recorte claro do mercado”.
+- Fotografias ocupam 100% dos cards com object-fit: cover.
+- Fade escuro sobre a fotografia, preservando legibilidade.
+- Conteúdo fica acima do fade.
+- CSS renomeado para site-v723.css para evitar o cache immutable de 1 ano da versão anterior.
+- Restante do site preservado.
