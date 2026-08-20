@@ -665,3 +665,25 @@ h1,h2,h3,p{margin-top:0}h1{font-size:clamp(3rem,5.7vw,5.5rem);line-height:.98;le
       url("../img/hero-como-escolher-painel-led.webp") 64% center / cover no-repeat;
   }
 }
+/* Hero — Guia Ventilação e Exaustão */
+.page-hero.page-hero-led.page-hero-ventilacao{
+  background:
+    linear-gradient(90deg,
+      rgba(2,8,5,.96) 0%,
+      rgba(2,8,5,.88) 34%,
+      rgba(2,8,5,.58) 66%
+    ),
+    url("../img/hero-ventilacao-exaustao.png") center 50% / cover no-repeat;
+}
+
+@media(max-width:620px){
+  .page-hero.page-hero-led.page-hero-ventilacao{
+    background:
+      linear-gradient(90deg,
+        rgba(2,8,5,.94) 0%,
+        rgba(2,8,5,.78) 65%,
+        rgba(2,8,5,.55) 100%
+      ),
+      url("../img/hero-ventilacao-exaustao.png") 68% center / cover no-repeat;
+  }
+}
