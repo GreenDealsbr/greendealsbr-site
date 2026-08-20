@@ -710,3 +710,29 @@ h1,h2,h3,p{margin-top:0}h1{font-size:clamp(3rem,5.7vw,5.5rem);line-height:.98;le
       url("../img/hero-sensores-medidores.png") 68% center / cover no-repeat;
   }
 }
+
+/* Lista de guias publicada */
+.guides-list article{
+  display:grid;
+  grid-template-columns:minmax(0,1.4fr) minmax(260px,.85fr);
+  align-items:center;
+  gap:48px;
+  padding:28px 0;
+}
+
+.guides-list h2{
+  margin:0;
+}
+
+.guides-list p{
+  margin:0;
+  justify-self:start;
+}
+
+@media(max-width:850px){
+  .guides-list article{
+    grid-template-columns:1fr;
+    gap:12px;
+    align-items:start;
+  }
+}
