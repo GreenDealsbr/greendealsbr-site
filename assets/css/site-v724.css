@@ -1140,3 +1140,116 @@ h1,h2,h3,p{margin-top:0}h1{font-size:clamp(3rem,5.7vw,5.5rem);line-height:.98;le
   }
 }
 
+
+/* Página de ofertas */
+.offers-page-hero{
+  background:
+    radial-gradient(circle at 75% 35%,rgba(124,255,114,.08),transparent 32%),
+    var(--bg);
+}
+
+.offers-category-grid{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:14px;
+  margin-top:28px;
+}
+
+.offers-category-grid a{
+  padding:18px 20px;
+  border:1px solid var(--line);
+  border-radius:16px;
+  background:rgba(255,255,255,.015);
+  color:var(--text);
+  font-weight:800;
+  transition:.2s;
+}
+
+.offers-category-grid a:hover{
+  border-color:rgba(124,255,114,.45);
+  transform:translateY(-2px);
+}
+
+.offers-grid{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:18px;
+  margin-top:28px;
+}
+
+.offer-card{
+  border:1px solid var(--line);
+  border-radius:20px;
+  overflow:hidden;
+  background:linear-gradient(145deg,rgba(255,255,255,.025),rgba(255,255,255,.008));
+}
+
+.offer-card-media{
+  min-height:210px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:
+    radial-gradient(circle,rgba(124,255,114,.12),transparent 45%),
+    rgba(255,255,255,.01);
+  color:var(--green2);
+  font-size:.76rem;
+  font-weight:900;
+  letter-spacing:.08em;
+}
+
+.offer-card-body{
+  padding:22px;
+}
+
+.offer-status{
+  display:block;
+  margin-bottom:10px;
+  color:var(--green2);
+  font-size:.72rem;
+  font-weight:900;
+  text-transform:uppercase;
+  letter-spacing:.08em;
+}
+
+.offer-card h3{
+  margin:0 0 10px;
+}
+
+.offer-card p{
+  margin:0;
+  color:var(--muted);
+  line-height:1.6;
+}
+
+.offers-trust{
+  display:grid;
+  grid-template-columns:minmax(0,1.4fr) minmax(260px,.6fr);
+  gap:40px;
+  align-items:start;
+  padding:30px;
+  border:1px solid var(--line);
+  border-radius:20px;
+  background:linear-gradient(145deg,rgba(255,255,255,.02),rgba(255,255,255,.006));
+}
+
+.offers-trust p{
+  max-width:760px;
+  color:var(--muted);
+  line-height:1.7;
+}
+
+.offers-trust-actions{
+  display:flex;
+  flex-direction:column;
+  gap:14px;
+}
+
+@media(max-width:850px){
+  .offers-category-grid,
+  .offers-grid,
+  .offers-trust{
+    grid-template-columns:1fr;
+  }
+}
+
