@@ -1,87 +1,257 @@
 {
-  "schema_version": 1,
-  "updated_at": "2026-08-24",
-  "offers": [
-    {
-      "id": "GDBR-OFFER-001",
-      "status": "active",
-      "editorial_status": "em_analise",
-
-      "marketplace": {
-        "name": "Amazon Brasil",
-        "code": "amazon_br",
-        "affiliate_id": "greendealsbr-20",
-        "commission_rate_observed": 0.08,
-        "commission_note": "Taxa observada na categoria durante a consulta. A comissão efetiva depende das regras vigentes do programa."
+   "offers" : [
+      {
+         "commercial" : {
+            "availability_observed" : "em_estoque",
+            "conditional_benefits_observed" : [
+               {
+                  "conditional" : true,
+                  "description" : "Ate 21x sem juros com cartao Amazon",
+                  "type" : "amazon_card_installments"
+               },
+               {
+                  "conditional" : true,
+                  "coupon_observed" : "CARTAOANOVO15",
+                  "description" : "15% OFF na primeira compra com cartao Amazon",
+                  "type" : "prime_first_purchase_card_discount"
+               },
+               {
+                  "conditional" : true,
+                  "coupon_observed" : "COMPRANOAPP",
+                  "description" : "R$ 20 OFF na primeira compra pelo app",
+                  "type" : "app_first_purchase_discount"
+               }
+            ],
+            "currency" : "BRL",
+            "fulfilled_by_observed" : "Amazon",
+            "installment_total_observed" : 699,
+            "installment_value_observed" : 58.25,
+            "installments_interest_observed" : "sem_juros",
+            "installments_observed" : 12,
+            "price_observed" : 699,
+            "price_observed_at" : "2026-08-26",
+            "pricing_display" : {
+               "currency" : "BRL",
+               "current_price" : 699,
+               "installment_interest" : "sem_juros",
+               "installment_value" : 58.25,
+               "installments" : 12,
+               "observed_at" : "2026-08-26",
+               "price_type" : "preco_observado"
+            },
+            "seller_observed" : "Master_Plants"
+         },
+         "editorial" : {
+            "headline" : "Painel LED Grow QB 120W",
+            "missing_data" : [
+               "PPFD",
+               "PPF",
+               "eficiência em umol/J",
+               "mapa de cobertura",
+               "histórico consistente de avaliações"
+            ],
+            "recommendation" : "necessita_comparacao",
+            "summary" : "Master Plants - 120W - Full Spectrum + Deep Red - LEDs LM283B.",
+            "verified_claims" : [
+               "Potência anunciada de 120W",
+               "LEDs LM283B",
+               "Full Spectrum + Deep Red",
+               "Estrutura de alumínio"
+            ]
+         },
+         "editorial_status" : "em_analise",
+         "id" : "GDBR-OFFER-001",
+         "links" : {
+            "affiliate_url" : "https://www.amazon.com.br/dp/B0GRCHBFX3?tag=greendealsbr-20",
+            "product_url" : "https://www.amazon.com.br/dp/B0GRCHBFX3"
+         },
+         "marketplace" : {
+            "affiliate_id" : "greendealsbr-20",
+            "code" : "amazon_br",
+            "commission_note" : "Taxa observada na categoria durante a consulta. A comissão efetiva depende das regras vigentes do programa.",
+            "commission_rate_observed" : 0.08,
+            "name" : "Amazon Brasil"
+         },
+         "media" : {
+            "alt" : "Painel LED Grow QB 120W Master Plants",
+            "image_local" : "assets/img/oferta-001-painel-led-120w.jpg"
+         },
+         "presentation" : {
+            "marketplace_specific_data" : true,
+            "price_component" : "offer-price-panel",
+            "template" : "mercadolivre_compact_v1"
+         },
+         "product" : {
+            "asin" : "B0GRCHBFX3",
+            "brand" : "Master Plants",
+            "category" : "iluminacao",
+            "country_of_origin" : "Brasil",
+            "model" : "11014",
+            "subcategory" : "painel_led",
+            "title" : "Painel LED Grow QB 120W"
+         },
+         "specifications" : {
+            "dimensions_cm" : {
+               "height" : 4,
+               "length" : 41,
+               "width" : 40
+            },
+            "led" : "LM283B",
+            "material" : "Alumínio",
+            "power_watts" : 120,
+            "spectrum" : "Full Spectrum + Deep Red",
+            "weight_kg" : 3.4
+         },
+         "status" : "active",
+         "tracking" : {
+            "created_at" : "2026-08-24",
+            "future_owner" : "hermes",
+            "last_checked_at" : "2026-08-26",
+            "source" : "manual"
+         }
       },
-
-      "product": {
-        "title": "Painel LED Grow QB 120W",
-        "brand": "Master Plants",
-        "model": "11014",
-        "asin": "B0GRCHBFX3",
-        "category": "iluminacao",
-        "subcategory": "painel_led",
-        "country_of_origin": "Brasil"
-      },
-
-      "specifications": {
-        "power_watts": 120,
-        "led": "LM283B",
-        "spectrum": "Full Spectrum + Deep Red",
-        "material": "Alumínio",
-        "dimensions_cm": {
-          "length": 41,
-          "width": 40,
-          "height": 4
-        },
-        "weight_kg": 3.4
-      },
-
-      "commercial": {
-        "currency": "BRL",
-        "price_observed": 699.00,
-        "price_observed_at": "2026-08-24",
-        "availability_observed": "em_estoque",
-        "seller_observed": "Master_Plants",
-        "fulfilled_by_observed": "Amazon"
-      },
-
-      "links": {
-        "product_url": "https://www.amazon.com.br/dp/B0GRCHBFX3",
-        "affiliate_url": "https://www.amazon.com.br/dp/B0GRCHBFX3?tag=greendealsbr-20"
-      },
-
-      "media": {
-        "image_local": "assets/img/oferta-001-painel-led-120w.jpg",
-        "alt": "Painel LED Grow QB 120W Master Plants"
-      },
-
-      "editorial": {
-        "headline": "Painel LED Grow QB 120W",
-        "summary": "Master Plants - 120W - Full Spectrum + Deep Red - LEDs LM283B.",
-        "recommendation": "necessita_comparacao",
-        "verified_claims": [
-          "Potência anunciada de 120W",
-          "LEDs LM283B",
-          "Full Spectrum + Deep Red",
-          "Estrutura de alumínio"
-        ],
-        "missing_data": [
-          "PPFD",
-          "PPF",
-          "eficiência em umol/J",
-          "mapa de cobertura",
-          "histórico consistente de avaliações"
-        ]
-      },
-
-      "tracking": {
-        "created_at": "2026-08-24",
-        "last_checked_at": "2026-08-24",
-        "source": "manual",
-        "future_owner": "hermes"
+      {
+         "commercial" : {
+            "availability_observed" : "em_estoque",
+            "badges_observed" : [
+               "Mais vendido",
+               "3º em Lampadas para Cultivo"
+            ],
+            "currency" : "BRL",
+            "discount_percent_observed" : 41,
+            "installment_total_observed" : 374.26,
+            "installment_value_observed" : 53.47,
+            "installments_interest_observed" : "sem_juros",
+            "installments_observed" : 7,
+            "price_from_observed" : 608.27,
+            "price_observed" : 355.55,
+            "price_observed_at" : "2026-08-26",
+            "price_type_observed" : "pix_promocional",
+            "pricing_display" : {
+               "currency" : "BRL",
+               "current_price" : 355.55,
+               "discount_percent" : 41,
+               "from_price" : 608.27,
+               "installment_interest" : "sem_juros",
+               "installment_total" : 374.26,
+               "installment_value" : 53.47,
+               "installments" : 7,
+               "observed_at" : "2026-08-26",
+               "payment_label" : "no Pix",
+               "price_type" : "pix_promocional"
+            },
+            "rating_observed" : 4.9,
+            "reviews_observed" : 418,
+            "seller_observed" : "Sunny Day",
+            "seller_type_observed" : "Loja Oficial",
+            "sold_quantity_observed" : "1000+"
+         },
+         "editorial" : {
+            "data_quality_notes" : [
+               "PPF e eficiencia sao valores declarados pelo vendedor e nao medidos pela Green Deals BR.",
+               "A ficha tecnica informa dimensoes de 30 x 2 x 40 cm, enquanto a descricao informa 40 x 30 x 3 cm."
+            ],
+            "headline" : "Painel LED Quantum 120W Samsung",
+            "missing_data" : [
+               "mapa de PPFD independente",
+               "teste independente de consumo real",
+               "historico de preco",
+               "validacao independente da eficiencia declarada"
+            ],
+            "recommendation" : "necessita_comparacao",
+            "seller_declared_claims" : [
+               "360 LEDs no total",
+               "216 Samsung LM281B 3000K",
+               "96 Samsung LM281B 6500K",
+               "36 Epistar Deep Red 660nm",
+               "6 Epistar Far Red 730nm",
+               "6 Epistar UV 395nm",
+               "PPF de 312 umol/s",
+               "Eficiencia de 2,6 umol/J",
+               "Garantia do vendedor de 6 meses"
+            ],
+            "summary" : "Sunny Day - 120W - Samsung LM281B - Full Spectrum - Dimmer.",
+            "verified_claims" : [
+               "Potencia anunciada de 120W",
+               "Full Spectrum",
+               "Dimmer",
+               "Bivolt 127/220V",
+               "Mais de 1.000 unidades vendidas observadas",
+               "Nota 4,9 observada com 418 avaliacoes"
+            ]
+         },
+         "editorial_status" : "em_analise",
+         "id" : "GDBR-OFFER-002",
+         "links" : {
+            "affiliate_url" : "https://www.mercadolivre.com.br/social/gd20260822101259472?matt_word=gd20260822101259472&matt_tool=90169256&forceInApp=true&ref=BA%2FkjIpgc0Tyg9hHaRXsARujjhE%2BOXNxMudyehcuH44aXqw8H%2FDaC4%2B1uU%2Bx2uNWqTDkG9c0bQEfxpo3auGGI8KWlbO4REZx70sMjRoCgoJcziKTdv0yFYXlW3Z8NfPs0m7aSdH%2BIa9q02biZGH4VlT90vt7A99KFvtLVXOCbtSl%2FXM95cw9kAKUR9dVO1f2iDa4TIeakPAFgQYMDQ%3D%3D&skipInApp=true",
+            "product_url" : "https://www.mercadolivre.com.br/painel-led-grow-quantum-samsung-lm281b-120w-dimmer-cultivo/up/MLBU1736837866?pdp_filters=item_id%3AMLB3568869371"
+         },
+         "marketplace" : {
+            "code" : "mercadolivre_br",
+            "commission_note" : "Ganho de afiliado de 12% observado na pagina do produto. A remuneracao efetiva depende das regras e elegibilidade vigentes do programa.",
+            "commission_rate_observed" : 0.12,
+            "name" : "Mercado Livre Brasil"
+         },
+         "media" : {
+            "alt" : "Painel LED Grow Quantum Samsung LM281B 120W Dimmer Sunny Day",
+            "image_local" : "assets/img/oferta-002-painel-led-120w-mercadolivre.jpg"
+         },
+         "presentation" : {
+            "marketplace_specific_data" : true,
+            "price_component" : "offer-price-panel",
+            "template" : "mercadolivre_compact_v1"
+         },
+         "product" : {
+            "brand" : "Sunny Day",
+            "catalog_product_id" : "MLBU1736837866",
+            "category" : "iluminacao",
+            "listing_id" : "MLB3568869371",
+            "subcategory" : "painel_led",
+            "title" : "Painel LED Grow Quantum Samsung LM281B 120W Dimmer"
+         },
+         "specifications" : {
+            "dimensions_description_cm" : {
+               "height" : 3,
+               "length" : 40,
+               "width" : 30
+            },
+            "dimensions_listing_cm" : {
+               "height" : 2,
+               "length" : 30,
+               "width" : 40
+            },
+            "dimmer" : true,
+            "efficiency_umol_j_declared" : 2.6,
+            "led_configuration_declared" : {
+               "epistar_deep_red_660nm" : 36,
+               "epistar_far_red_730nm" : 6,
+               "epistar_uv_395nm" : 6,
+               "samsung_lm281b_3000k" : 216,
+               "samsung_lm281b_6500k" : 96
+            },
+            "led_total_declared" : 360,
+            "power_watts" : 120,
+            "ppf_umol_s_declared" : 312,
+            "seller_warranty_months_declared" : 6,
+            "spectrum" : "Full Spectrum",
+            "voltage" : "Bivolt 127/220V"
+         },
+         "status" : "active",
+         "tracking" : {
+            "affiliate_destination_listing_id" : "MLB3568869371",
+            "affiliate_flow" : "gdbr_to_affiliate_profile_to_product",
+            "affiliate_link_validated_at" : "2026-08-26",
+            "affiliate_link_validation_result" : "ok_web",
+            "affiliate_profile_id" : "gd20260822101259472",
+            "affiliate_tool_id" : "90169256",
+            "affiliate_web_note" : "Link validado em navegador desktop com skipInApp=true; abriu o perfil afiliado e depois o produto correto sem redirecionar para a loja de aplicativos.",
+            "created_at" : "2026-08-26",
+            "future_owner" : "hermes",
+            "last_checked_at" : "2026-08-26",
+            "source" : "manual"
+         }
       }
-    }
-  ]
+   ],
+   "schema_version" : 1,
+   "updated_at" : "2026-08-26"
 }

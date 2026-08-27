@@ -1304,3 +1304,574 @@ h1,h2,h3,p{margin-top:0}h1{font-size:clamp(3rem,5.7vw,5.5rem);line-height:.98;le
     height:160px;
   }
 }
+
+/* === GDBR | AJUSTE VISUAL DOS CARDS DE OFERTA === */
+.offer-card .offer-card-body p{
+  margin: 0;
+  color: rgba(255,255,255,.82);
+  line-height: 1.6;
+}
+
+.offer-card .offer-card-body [data-field="summary"]{
+  display: block;
+  margin-bottom: 14px;
+}
+
+.offer-card .offer-card-body [data-field="price"]{
+  display: inline-block;
+  margin: 2px 8px 0 0;
+  padding: 9px 13px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, rgba(124,255,114,.24), rgba(124,255,114,.10));
+  border: 1px solid rgba(124,255,114,.36);
+  box-shadow:
+    inset 0 0 0 1px rgba(255,255,255,.04),
+    0 10px 24px rgba(0,0,0,.22);
+  color: #d8ffb2;
+  font-size: 1.26rem;
+  font-weight: 900;
+  letter-spacing: -0.02em;
+  line-height: 1;
+}
+
+.offer-card .offer-card-body [data-field="price-note"]{
+  display: block;
+  margin-top: 10px;
+  color: rgba(255,255,255,.72);
+}
+
+.offer-card .offer-card-body .button.primary{
+  display: inline-flex;
+  margin-top: 20px;
+}
+
+@media (max-width:700px){
+  .offer-card .offer-card-body [data-field="price"]{
+    font-size: 1.12rem;
+  }
+
+  .offer-card .offer-card-body .button.primary{
+    margin-top: 18px;
+  }
+}
+
+
+
+/* === GDBR | PADRAO GLOBAL DE PRECO DAS OFERTAS V1 === */
+
+/*
+  Componente padrão:
+  resumo
+  → painel comercial
+  → preço anterior opcional
+  → preço atual
+  → desconto opcional
+  → pagamento opcional
+  → parcelamento opcional
+  → observação
+  → CTA
+
+  O componente é independente de marketplace.
+*/
+
+.offers-grid .offer-card{
+  height:100%;
+}
+
+.offers-grid .offer-card .offer-card-body{
+  display:flex;
+  flex-direction:column;
+  height:100%;
+}
+
+.offers-grid .offer-card .offer-summary{
+  display:block;
+  min-height:58px;
+  margin-top:10px;
+  margin-bottom:18px;
+  color:rgba(255,255,255,.82);
+  line-height:1.55;
+}
+
+.offers-grid .offer-price-panel{
+  width:100%;
+  box-sizing:border-box;
+  margin-top:2px;
+  margin-bottom:24px;
+  padding:15px 16px 16px;
+  border:1px solid rgba(124,255,114,.16);
+  border-radius:14px;
+  background:
+    radial-gradient(
+      circle at 10% 0%,
+      rgba(124,255,114,.08),
+      transparent 48%
+    ),
+    rgba(255,255,255,.018);
+}
+
+.offers-grid .offer-old-price{
+  display:block;
+  margin-bottom:8px;
+  color:rgba(255,255,255,.45);
+  font-size:.91rem;
+  font-weight:650;
+  line-height:1;
+  text-decoration:line-through;
+  text-decoration-thickness:1.4px;
+}
+
+.offers-grid .offer-price-row{
+  display:flex;
+  align-items:center;
+  flex-wrap:wrap;
+  gap:8px;
+  width:100%;
+}
+
+.offers-grid .offer-current-price{
+  display:inline-flex;
+  align-items:center;
+  min-height:43px;
+  box-sizing:border-box;
+  padding:8px 13px;
+  border:1px solid rgba(124,255,114,.42);
+  border-radius:11px;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(124,255,114,.25),
+      rgba(124,255,114,.09)
+    );
+
+  box-shadow:
+    inset 0 0 0 1px rgba(255,255,255,.035),
+    0 9px 23px rgba(0,0,0,.20);
+
+  color:#e1ffbd;
+  font-size:1.42rem;
+  font-weight:950;
+  letter-spacing:-.025em;
+  line-height:1;
+}
+
+.offers-grid .offer-discount-badge{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  min-height:27px;
+  padding:0 9px;
+  border-radius:7px;
+  background:#24d66b;
+  color:#06130c;
+  font-size:.73rem;
+  font-weight:950;
+  letter-spacing:.025em;
+  line-height:1;
+  white-space:nowrap;
+}
+
+.offers-grid .offer-payment-badge{
+  display:inline-flex;
+  align-items:center;
+  min-height:27px;
+  color:#66ee99;
+  font-size:.82rem;
+  font-weight:850;
+  white-space:nowrap;
+}
+
+.offers-grid .offer-installments{
+  display:block;
+  margin-top:10px;
+  color:#7ce8a3;
+  font-size:.86rem;
+  font-weight:700;
+  line-height:1.45;
+}
+
+.offers-grid .offer-price-note{
+  display:block;
+  margin-top:12px;
+  color:rgba(255,255,255,.59);
+  font-size:.80rem;
+  line-height:1.5;
+}
+
+.offers-grid .offer-marketplace-cta{
+  align-self:flex-start;
+  margin-top:auto;
+}
+
+@media(max-width:700px){
+
+  .offers-grid .offer-card .offer-summary{
+    min-height:0;
+  }
+
+  .offers-grid .offer-price-panel{
+    margin-bottom:20px;
+    padding:14px;
+  }
+
+  .offers-grid .offer-current-price{
+    font-size:1.22rem;
+  }
+
+}
+
+
+
+/* === GDBR | BENEFICIOS CONDICIONAIS DAS OFERTAS V1 === */
+
+.offers-grid .offer-benefits{
+  display:flex;
+  flex-direction:column;
+  gap:7px;
+  width:100%;
+  margin-top:14px;
+  padding-top:13px;
+  border-top:1px solid rgba(255,255,255,.07);
+}
+
+.offers-grid .offer-benefits-label{
+  color:rgba(255,255,255,.48);
+  font-size:.70rem;
+  font-weight:900;
+  letter-spacing:.09em;
+  text-transform:uppercase;
+}
+
+.offers-grid .offer-benefit-item{
+  position:relative;
+  display:block;
+  padding-left:14px;
+  color:#8de5a7;
+  font-size:.78rem;
+  font-weight:650;
+  line-height:1.4;
+}
+
+.offers-grid .offer-benefit-item::before{
+  content:"";
+  position:absolute;
+  top:.52em;
+  left:0;
+  width:6px;
+  height:6px;
+  border-radius:50%;
+  background:#61e88f;
+  box-shadow:0 0 10px rgba(97,232,143,.35);
+}
+
+.offers-grid .offer-benefits + .offer-price-note{
+  margin-top:14px;
+}
+
+
+/* === GDBR | ALINHAMENTO FINAL GLOBAL DOS CARDS V1 === */
+
+.offers-grid{
+  align-items:stretch;
+}
+
+.offers-grid .offer-card{
+  display:flex;
+  flex-direction:column;
+  height:100%;
+}
+
+.offers-grid .offer-card-media{
+  flex:0 0 auto;
+}
+
+.offers-grid .offer-card-body{
+  display:flex;
+  flex:1 1 auto;
+  flex-direction:column;
+  height:auto;
+}
+
+.offers-grid .offer-summary{
+  flex:0 0 auto;
+}
+
+.offers-grid .offer-price-panel{
+  flex:0 0 auto;
+}
+
+.offers-grid .offer-marketplace-cta{
+  margin-top:auto;
+  align-self:flex-start;
+}
+
+/* Compacta benefícios extensos sem perder informação */
+.offers-grid .offer-benefits{
+  gap:6px;
+}
+
+.offers-grid .offer-benefit-item{
+  font-size:.76rem;
+  line-height:1.35;
+}
+
+.offers-grid .offer-price-note{
+  line-height:1.42;
+}
+
+
+
+/* === GDBR | TEMPLATE MERCADO LIVRE GLOBAL V1 === */
+
+/*
+  TEMPLATE OFICIAL DOS CARDS DE OFERTA
+
+  Referência visual:
+  Mercado Livre.
+
+  Estrutura fixa.
+  Conteúdo variável por marketplace.
+*/
+
+.offers-grid{
+  align-items:stretch;
+}
+
+.offers-grid .offer-card[data-offer-id]{
+  display:flex;
+  flex-direction:column;
+  height:100%;
+}
+
+.offers-grid .offer-card[data-offer-id] .offer-card-body{
+  display:flex;
+  flex:1 1 auto;
+  flex-direction:column;
+}
+
+
+/* Resumo */
+
+.offers-grid .offer-summary{
+  display:block;
+
+  min-height:58px;
+
+  margin-top:10px;
+  margin-bottom:18px;
+
+  color:rgba(255,255,255,.82);
+
+  line-height:1.55;
+}
+
+
+/* Caixa comercial compacta */
+
+.offers-grid .offer-price-panel{
+  display:flex;
+  flex-direction:column;
+
+  width:100%;
+  min-height:0;
+
+  box-sizing:border-box;
+
+  margin-top:2px;
+  margin-bottom:24px;
+
+  padding:15px 16px 16px;
+
+  border:1px solid rgba(124,255,114,.16);
+  border-radius:14px;
+
+  background:
+    radial-gradient(
+      circle at 10% 0%,
+      rgba(124,255,114,.08),
+      transparent 48%
+    ),
+    rgba(255,255,255,.018);
+}
+
+
+/* Preço anterior opcional */
+
+.offers-grid .offer-old-price{
+  display:block;
+
+  margin-bottom:8px;
+
+  color:rgba(255,255,255,.45);
+
+  font-size:.91rem;
+  font-weight:650;
+  line-height:1;
+
+  text-decoration:line-through;
+  text-decoration-thickness:1.4px;
+}
+
+
+/* Linha principal */
+
+.offers-grid .offer-price-row{
+  display:flex;
+  align-items:center;
+  flex-wrap:wrap;
+
+  gap:8px;
+
+  width:100%;
+}
+
+
+/* Preço atual */
+
+.offers-grid .offer-current-price{
+  display:inline-flex;
+  align-items:center;
+
+  min-height:43px;
+
+  padding:8px 13px;
+
+  border:1px solid rgba(124,255,114,.42);
+  border-radius:11px;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(124,255,114,.25),
+      rgba(124,255,114,.09)
+    );
+
+  box-shadow:
+    inset 0 0 0 1px rgba(255,255,255,.035),
+    0 9px 23px rgba(0,0,0,.20);
+
+  color:#e1ffbd;
+
+  font-size:1.42rem;
+  font-weight:950;
+
+  letter-spacing:-.025em;
+  line-height:1;
+}
+
+
+/* Badge de desconto */
+
+.offers-grid .offer-discount-badge{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+
+  min-height:27px;
+
+  padding:0 9px;
+
+  border-radius:7px;
+
+  background:#24d66b;
+  color:#06130c;
+
+  font-size:.73rem;
+  font-weight:950;
+
+  white-space:nowrap;
+}
+
+
+/* Tipo de pagamento */
+
+.offers-grid .offer-payment-badge{
+  display:inline-flex;
+  align-items:center;
+
+  min-height:27px;
+
+  color:#66ee99;
+
+  font-size:.82rem;
+  font-weight:850;
+
+  white-space:nowrap;
+}
+
+
+/* Parcelamento */
+
+.offers-grid .offer-installments{
+  display:block;
+
+  margin-top:10px;
+
+  color:#7ce8a3;
+
+  font-size:.84rem;
+  font-weight:750;
+
+  line-height:1.45;
+}
+
+
+/* Informação específica do marketplace */
+
+.offers-grid .offer-marketplace-extra{
+  display:block;
+
+  margin-top:7px;
+
+  color:rgba(141,229,167,.92);
+
+  font-size:.76rem;
+  font-weight:650;
+
+  line-height:1.4;
+}
+
+
+/* Observação */
+
+.offers-grid .offer-price-note{
+  display:block;
+
+  margin-top:13px;
+
+  color:rgba(255,255,255,.57);
+
+  font-size:.78rem;
+
+  line-height:1.42;
+}
+
+
+/* CTA */
+
+.offers-grid .offer-marketplace-cta{
+  align-self:flex-start;
+
+  margin-top:auto;
+}
+
+
+/* Mobile */
+
+@media(max-width:700px){
+
+  .offers-grid .offer-summary{
+    min-height:0;
+  }
+
+  .offers-grid .offer-current-price{
+    font-size:1.22rem;
+  }
+
+  .offers-grid .offer-price-panel{
+    padding:14px;
+  }
+
+}
+
