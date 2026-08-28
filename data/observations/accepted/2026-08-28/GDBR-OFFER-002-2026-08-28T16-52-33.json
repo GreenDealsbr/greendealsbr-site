@@ -1,0 +1,33 @@
+{
+   "commercial" : {
+      "availability" : "em_estoque",
+      "currency" : "BRL",
+      "discount_percent" : 41,
+      "installments" : {
+         "count" : 7,
+         "interest" : "sem_juros",
+         "total" : 374.26,
+         "value" : 53.47
+      },
+      "price" : 355.55,
+      "price_from" : 608.27,
+      "rating" : 4.9,
+      "seller" : "Sunny Day"
+   },
+   "contract_version" : "1.0",
+   "links" : {
+      "affiliate_url" : "https://www.mercadolivre.com.br/social/gd20260822101259472?matt_word=gd20260822101259472&matt_tool=90169256&forceInApp=true&ref=BA%2FkjIpgc0Tyg9hHaRXsARujjhE%2BOXNxMudyehcuH44aXqw8H%2FDaC4%2B1uU%2Bx2uNWqTDkG9c0bQEfxpo3auGGI8KWlbO4REZx70sMjRoCgoJcziKTdv0yFYXlW3Z8NfPs0m7aSdH%2BIa9q02biZGH4VlT90vt7A99KFvtLVXOCbtSl%2FXM95cw9kAKUR9dVO1f2iDa4TIeakPAFgQYMDQ%3D%3D&skipInApp=true",
+      "product_url" : "https://www.mercadolivre.com.br/painel-led-grow-quantum-samsung-lm281b-120w-dimmer-cultivo/up/MLBU1736837866?pdp_filters=item_id%3AMLB3568869371"
+   },
+   "marketplace" : "mercadolivre_br",
+   "observed_at" : "2026-08-28T16:52:33",
+   "offer_id" : "GDBR-OFFER-002",
+   "product_title" : "Painel LED Grow Quantum Samsung LM281B 120W Dimmer",
+   "provenance" : {
+      "captured_at" : "2026-08-28T16:52:33",
+      "collector" : "manual_web_verified",
+      "confidence" : "observed",
+      "evidence" : "public_marketplace_listing"
+   },
+   "source" : "manual_web_verified_mercadolivre"
+}
