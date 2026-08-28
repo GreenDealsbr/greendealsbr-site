@@ -15,11 +15,12 @@
             "collection_status" : "manual",
             "current_manager" : "manual",
             "future_owner" : "hermes",
+            "last_collector" : "snapshot_collector_v1",
             "price_monitoring" : false,
             "publish_status" : "manual"
          },
          "commercial" : {
-            "availability_observed" : "em_estoque",
+            "availability_observed" : "sem_oferta_destacada",
             "conditional_benefits_observed" : [
                {
                   "conditional" : true,
@@ -84,9 +85,9 @@
          "editorial_status" : "em_analise",
          "history" : {
             "append_only" : true,
-            "last_snapshot_at" : "2026-08-26",
+            "last_snapshot_at" : "2026-08-28T18:10:31",
             "price_history_file" : "data/history/GDBR-OFFER-001.jsonl",
-            "snapshot_source" : "manual_initial_import"
+            "snapshot_source" : "manual_web_verified_amazon"
          },
          "id" : "GDBR-OFFER-001",
          "links" : {
@@ -134,7 +135,9 @@
          "tracking" : {
             "created_at" : "2026-08-24",
             "future_owner" : "hermes",
-            "last_checked_at" : "2026-08-26",
+            "last_checked_at" : "2026-08-28T18:10:31",
+            "last_collection_source" : "manual_web_verified_amazon",
+            "last_observation_type" : "availability_only",
             "source" : "manual"
          }
       },
