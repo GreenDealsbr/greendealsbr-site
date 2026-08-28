@@ -1,0 +1,30 @@
+{
+   "commercial" : {
+      "availability" : "em_estoque",
+      "currency" : "BRL",
+      "installments" : {
+         "count" : 12,
+         "interest" : "sem_juros",
+         "total" : 699,
+         "value" : 58.25
+      },
+      "price" : 699,
+      "seller" : "Master_Plants"
+   },
+   "contract_version" : "1.0",
+   "links" : {
+      "affiliate_url" : "https://www.amazon.com.br/dp/B0GRCHBFX3?tag=greendealsbr-20",
+      "product_url" : "https://www.amazon.com.br/dp/B0GRCHBFX3"
+   },
+   "marketplace" : "amazon_br",
+   "observed_at" : "2026-08-26",
+   "offer_id" : "GDBR-OFFER-001",
+   "product_title" : "Painel LED Grow QB 120W",
+   "provenance" : {
+      "captured_at" : "2026-08-26",
+      "collector" : "manual",
+      "confidence" : "observed",
+      "evidence" : "existing_gdbr_offer_data"
+   },
+   "source" : "manual"
+}

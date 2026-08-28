@@ -1,0 +1,62 @@
+{
+   "contract" : "GDBR Observation Contract",
+   "contract_version" : "1.0",
+   "optional_fields" : [
+      "product_id",
+      "product_title",
+      "commercial.price_from",
+      "commercial.discount_percent",
+      "commercial.seller_type",
+      "commercial.installments.count",
+      "commercial.installments.value",
+      "commercial.installments.total",
+      "commercial.installments.interest",
+      "commercial.rating",
+      "commercial.reviews",
+      "commercial.sold_quantity",
+      "links.product_url",
+      "links.affiliate_url",
+      "provenance.collector",
+      "provenance.captured_at",
+      "provenance.evidence",
+      "provenance.confidence"
+   ],
+   "purpose" : "Padronizar observacoes comerciais recebidas de marketplaces, coletores e futuros agentes do Hermes.",
+   "required_fields" : [
+      "contract_version",
+      "offer_id",
+      "marketplace",
+      "observed_at",
+      "source",
+      "commercial.currency",
+      "commercial.price",
+      "commercial.availability",
+      "commercial.seller"
+   ],
+   "rules" : {
+      "discount_percent_range" : [
+         0,
+         100
+      ],
+      "invented_values" : "forbidden",
+      "marketplace_pattern" : "^[a-z0-9_]+$",
+      "marketplace_promotional_claims" : "observed_data_only_not_gdbr_validation",
+      "missing_optional_fields" : "omit",
+      "observed_at_formats" : [
+         "YYYY-MM-DD",
+         "YYYY-MM-DDTHH:MM:SS"
+      ],
+      "offer_id_pattern" : "^GDBR-OFFER-[0-9]{3,}$",
+      "price_must_be_positive" : true,
+      "rating_range" : [
+         0,
+         5
+      ],
+      "reviews_must_be_non_negative" : true
+   },
+   "supported_marketplace_examples" : [
+      "amazon_br",
+      "mercadolivre_br",
+      "shopee_br"
+   ]
+}
