@@ -12,12 +12,20 @@ binmode STDOUT, ':encoding(UTF-8)';
 # ARGUMENTOS
 # ============================================================
 
-my $offer_id;
+
+        my $input_file;
+        my $input_marketplace;
+        my $input_currency;
+
+        my $offer_id;
+
 my $price;
 my $observed_at;
 my $availability;
 my $seller;
-my $source = 'manual_collector_v1';
+
+    my $source;
+
 
 my $price_from;
 my $discount_percent;
@@ -35,7 +43,11 @@ my $apply = 0;
 my $force = 0;
 
 
-GetOptions(
+
+        GetOptions(
+
+            'input=s'                   => \$input_file,
+
 
     'offer=s'                   => \$offer_id,
     'price=f'                   => \$price,
@@ -63,6 +75,324 @@ GetOptions(
 
 ) or die "ERRO: argumentos invalidos.\n";
 
+# ============================================================
+# INPUT OBSERVATION CONTRACT V1
+# ============================================================
+
+if (defined $input_file) {
+
+    -f $input_file
+        or die "ERRO: arquivo de input nao encontrado: $input_file\n";
+
+
+    open my $ifh, '<:raw', $input_file
+        or die "ERRO: nao foi possivel abrir $input_file\n";
+
+
+    my $input_raw;
+    {
+        local $/;
+        $input_raw = <$ifh>;
+    }
+    close $ifh;
+
+
+    my $input;
+
+    eval {
+        $input = decode_json($input_raw);
+    };
+
+
+    if ($@) {
+
+        die
+            "ERRO: input nao e JSON valido: "
+            . $@
+            . "\n";
+    }
+
+
+    # --------------------------------------------------------
+    # CONTRACT VERSION
+    # --------------------------------------------------------
+
+    die "ERRO: contract_version deve ser 1.0\n"
+        unless
+        defined $input->{contract_version}
+        && $input->{contract_version} eq '1.0';
+
+
+    # --------------------------------------------------------
+    # CAMPOS PRINCIPAIS
+    # --------------------------------------------------------
+
+    my $contract_offer_id =
+        $input->{offer_id};
+
+
+    my $contract_marketplace =
+        $input->{marketplace};
+
+
+    my $contract_observed_at =
+        $input->{observed_at};
+
+
+    my $contract_source =
+        $input->{source};
+
+
+    die "ERRO: offer_id invalido no input\n"
+        unless
+        defined $contract_offer_id
+        && $contract_offer_id
+            =~ /^GDBR-OFFER-[0-9]{3,}$/;
+
+
+    die "ERRO: marketplace invalido no input\n"
+        unless
+        defined $contract_marketplace
+        && $contract_marketplace
+            =~ /^[a-z0-9_]+$/;
+
+
+    die "ERRO: observed_at invalido no input\n"
+        unless
+        defined $contract_observed_at
+        && $contract_observed_at
+            =~ /^\d{4}-\d{2}-\d{2}(?:T\d{2}:\d{2}:\d{2})?$/;
+
+
+    die "ERRO: source ausente no input\n"
+        unless
+        defined $contract_source
+        && length $contract_source;
+
+
+    # --------------------------------------------------------
+    # COMMERCIAL
+    # --------------------------------------------------------
+
+    my $c =
+        $input->{commercial}
+        || {};
+
+
+    die "ERRO: commercial.currency ausente\n"
+        unless
+        defined $c->{currency}
+        && length $c->{currency};
+
+
+    die "ERRO: commercial.price invalido\n"
+        unless
+        defined $c->{price}
+        && $c->{price} > 0;
+
+
+    die "ERRO: commercial.availability ausente\n"
+        unless
+        defined $c->{availability}
+        && length $c->{availability};
+
+
+    die "ERRO: commercial.seller ausente\n"
+        unless
+        defined $c->{seller}
+        && length $c->{seller};
+
+
+    if (
+        defined $c->{discount_percent}
+        &&
+        (
+            $c->{discount_percent} < 0
+            ||
+            $c->{discount_percent} > 100
+        )
+    ) {
+
+        die "ERRO: commercial.discount_percent fora de 0..100\n";
+    }
+
+
+    if (
+        defined $c->{rating}
+        &&
+        (
+            $c->{rating} < 0
+            ||
+            $c->{rating} > 5
+        )
+    ) {
+
+        die "ERRO: commercial.rating fora de 0..5\n";
+    }
+
+
+    if (
+        defined $c->{reviews}
+        && $c->{reviews} < 0
+    ) {
+
+        die "ERRO: commercial.reviews nao pode ser negativo\n";
+    }
+
+
+    # --------------------------------------------------------
+    # CONFLITOS ENTRE CLI E INPUT
+    #
+    # CLI continua permitido por compatibilidade.
+    # Se ambos forem informados, nao podem divergir.
+    # --------------------------------------------------------
+
+    if (
+        defined $offer_id
+        && $offer_id ne $contract_offer_id
+    ) {
+
+        die "ERRO: --offer conflita com offer_id do input\n";
+    }
+
+
+    if (
+        defined $price
+        && (0 + $price) != (0 + $c->{price})
+    ) {
+
+        die "ERRO: --price conflita com commercial.price do input\n";
+    }
+
+
+    if (
+        defined $observed_at
+        && $observed_at ne $contract_observed_at
+    ) {
+
+        die "ERRO: --observed-at conflita com observed_at do input\n";
+    }
+
+
+    if (
+        defined $availability
+        && $availability ne $c->{availability}
+    ) {
+
+        die "ERRO: --availability conflita com input\n";
+    }
+
+
+    if (
+        defined $seller
+        && $seller ne $c->{seller}
+    ) {
+
+        die "ERRO: --seller conflita com input\n";
+    }
+
+
+    # --------------------------------------------------------
+    # NORMALIZACAO PARA O COLLECTOR
+    # --------------------------------------------------------
+
+    $offer_id //=
+        $contract_offer_id;
+
+
+    $price //=
+        0 + $c->{price};
+
+
+    $observed_at //=
+        $contract_observed_at;
+
+
+    $availability //=
+        $c->{availability};
+
+
+    $seller //=
+        $c->{seller};
+
+
+    $source //=
+        $contract_source;
+
+
+    $input_marketplace =
+        $contract_marketplace;
+
+
+    $input_currency =
+        $c->{currency};
+
+
+    # --------------------------------------------------------
+    # CAMPOS OPCIONAIS
+    # --------------------------------------------------------
+
+    $price_from //=
+        $c->{price_from}
+            if defined $c->{price_from};
+
+
+    $discount_percent //=
+        $c->{discount_percent}
+            if defined $c->{discount_percent};
+
+
+    if (
+        defined $c->{installments}
+        && ref $c->{installments} eq 'HASH'
+    ) {
+
+        $installments //=
+            $c->{installments}->{count}
+                if defined $c->{installments}->{count};
+
+
+        $installment_value //=
+            $c->{installments}->{value}
+                if defined $c->{installments}->{value};
+
+
+        $installment_total //=
+            $c->{installments}->{total}
+                if defined $c->{installments}->{total};
+
+
+        $installments_interest //=
+            $c->{installments}->{interest}
+                if defined $c->{installments}->{interest};
+    }
+
+
+    $rating //=
+        $c->{rating}
+            if defined $c->{rating};
+
+
+    $reviews //=
+        $c->{reviews}
+            if defined $c->{reviews};
+
+
+    $sold_quantity //=
+        $c->{sold_quantity}
+            if defined $c->{sold_quantity};
+
+
+    print "\n";
+    print "Observation Contract carregado:\n";
+    print "$input_file\n";
+}
+
+$source //=
+    'manual_collector_v1';
+
+
+
 
 # ============================================================
 # FUNCOES
@@ -85,7 +415,21 @@ sub usage {
 
     print <<'TXT';
 
-Uso:
+
+        Uso:
+
+        Modo Observation Contract:
+
+        perl scripts/snapshot_collector.pl \
+          --input observation.json
+
+        Escrita real:
+
+        perl scripts/snapshot_collector.pl \
+          --input observation.json \
+          --apply
+
+        Modo legado por argumentos:
 
 perl scripts/snapshot_collector.pl \
   --offer GDBR-OFFER-001 \
@@ -188,8 +532,11 @@ open my $fh, '<:raw', $offers_file
     or fail("nao foi possivel abrir $offers_file");
 
 
-local $/;
-my $raw = <$fh>;
+my $raw;
+{
+    local $/;
+    $raw = <$fh>;
+}
 close $fh;
 
 
@@ -222,8 +569,46 @@ for my $candidate (@{$data->{offers} || []}) {
 }
 
 
-fail("oferta $offer_id nao encontrada")
+
+        fail("oferta $offer_id nao encontrada")
     unless $offer;
+
+
+if (defined $input_marketplace) {
+
+    my $expected_marketplace =
+        $offer->{marketplace}->{code}
+        // '';
+
+
+    fail(
+        "marketplace do input nao corresponde "
+        . "ao marketplace cadastrado para $offer_id"
+    )
+        unless
+        $input_marketplace
+        eq $expected_marketplace;
+}
+
+
+if (defined $input_currency) {
+
+    my $expected_currency =
+        $offer->{commercial}->{currency}
+        // 'BRL';
+
+
+    fail(
+        "currency do input nao corresponde "
+        . "a moeda cadastrada para $offer_id"
+    )
+        unless
+        $input_currency
+        eq $expected_currency;
+}
+
+
+
 
 
 my $history_file =
@@ -753,8 +1138,11 @@ if (-f $analysis_file) {
         or fail("nao foi possivel abrir relatorio");
 
 
-    local $/;
-    my $analysis_raw = <$af>;
+    my $analysis_raw;
+    {
+        local $/;
+        $analysis_raw = <$af>;
+    }
     close $af;
 
 
@@ -791,6 +1179,43 @@ if (-f $analysis_file) {
     }
 }
 
+
+
+# ============================================================
+# FINALIZANDO TRANSACAO COM SUCESSO
+# ============================================================
+
+for my $backup_file (
+    $backup_offers,
+    $backup_history,
+    $backup_analysis
+) {
+
+    next unless
+        defined $backup_file
+        && length $backup_file;
+
+    if (-f $backup_file) {
+
+        unlink $backup_file
+            or warn
+                "ATENCAO: nao foi possivel remover "
+                . "$backup_file: $!\n";
+    }
+}
+
+
+if (-d $txn_dir) {
+
+    rmdir $txn_dir
+        or warn
+            "ATENCAO: nao foi possivel remover "
+            . "diretorio transacional $txn_dir: $!\n";
+}
+
+
+print "\n";
+print "Transacao confirmada. Cleanup concluido.\n";
 
 print "\n";
 print "OK: Snapshot Collector V1 concluido.\n";

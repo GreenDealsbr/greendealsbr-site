@@ -113,8 +113,11 @@ sub classify_opportunity {
 open my $fh, '<:raw', $offers_file
     or die "ERRO ao abrir $offers_file: $!\n";
 
-local $/;
-my $raw = <$fh>;
+my $raw;
+{
+    local $/;
+    $raw = <$fh>;
+}
 close $fh;
 
 my $data = decode_json($raw);
