@@ -1,6 +1,23 @@
 {
+   "data_model" : {
+      "architecture" : "current_state_plus_append_only_history",
+      "canonical_owner" : "green_deals_br",
+      "current_state_file" : "data/ofertas.json",
+      "future_automation_owner" : "hermes",
+      "notes" : "ofertas.json representa o estado atual conhecido; historico temporal deve ser registrado separadamente",
+      "price_history_directory" : "data/history"
+   },
    "offers" : [
       {
+         "automation" : {
+            "affiliate_link_monitoring" : false,
+            "availability_monitoring" : false,
+            "collection_status" : "manual",
+            "current_manager" : "manual",
+            "future_owner" : "hermes",
+            "price_monitoring" : false,
+            "publish_status" : "manual"
+         },
          "commercial" : {
             "availability_observed" : "em_estoque",
             "conditional_benefits_observed" : [
@@ -41,6 +58,11 @@
             },
             "seller_observed" : "Master_Plants"
          },
+         "data_quality" : {
+            "last_reviewed_at" : "2026-08-26",
+            "minimum_commercial_data_complete" : true,
+            "missing_required_fields" : []
+         },
          "editorial" : {
             "headline" : "Painel LED Grow QB 120W",
             "missing_data" : [
@@ -60,6 +82,12 @@
             ]
          },
          "editorial_status" : "em_analise",
+         "history" : {
+            "append_only" : true,
+            "last_snapshot_at" : "2026-08-26",
+            "price_history_file" : "data/history/GDBR-OFFER-001.jsonl",
+            "snapshot_source" : "manual_initial_import"
+         },
          "id" : "GDBR-OFFER-001",
          "links" : {
             "affiliate_url" : "https://www.amazon.com.br/dp/B0GRCHBFX3?tag=greendealsbr-20",
@@ -111,6 +139,15 @@
          }
       },
       {
+         "automation" : {
+            "affiliate_link_monitoring" : false,
+            "availability_monitoring" : false,
+            "collection_status" : "manual",
+            "current_manager" : "manual",
+            "future_owner" : "hermes",
+            "price_monitoring" : false,
+            "publish_status" : "manual"
+         },
          "commercial" : {
             "availability_observed" : "em_estoque",
             "badges_observed" : [
@@ -145,6 +182,11 @@
             "seller_observed" : "Sunny Day",
             "seller_type_observed" : "Loja Oficial",
             "sold_quantity_observed" : "1000+"
+         },
+         "data_quality" : {
+            "last_reviewed_at" : "2026-08-26",
+            "minimum_commercial_data_complete" : true,
+            "missing_required_fields" : []
          },
          "editorial" : {
             "data_quality_notes" : [
@@ -181,6 +223,12 @@
             ]
          },
          "editorial_status" : "em_analise",
+         "history" : {
+            "append_only" : true,
+            "last_snapshot_at" : "2026-08-26",
+            "price_history_file" : "data/history/GDBR-OFFER-002.jsonl",
+            "snapshot_source" : "manual_initial_import"
+         },
          "id" : "GDBR-OFFER-002",
          "links" : {
             "affiliate_url" : "https://www.mercadolivre.com.br/social/gd20260822101259472?matt_word=gd20260822101259472&matt_tool=90169256&forceInApp=true&ref=BA%2FkjIpgc0Tyg9hHaRXsARujjhE%2BOXNxMudyehcuH44aXqw8H%2FDaC4%2B1uU%2Bx2uNWqTDkG9c0bQEfxpo3auGGI8KWlbO4REZx70sMjRoCgoJcziKTdv0yFYXlW3Z8NfPs0m7aSdH%2BIa9q02biZGH4VlT90vt7A99KFvtLVXOCbtSl%2FXM95cw9kAKUR9dVO1f2iDa4TIeakPAFgQYMDQ%3D%3D&skipInApp=true",
@@ -252,6 +300,6 @@
          }
       }
    ],
-   "schema_version" : 1,
-   "updated_at" : "2026-08-26"
+   "schema_version" : 2,
+   "updated_at" : "2026-08-27"
 }
