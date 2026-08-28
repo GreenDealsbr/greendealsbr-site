@@ -1,0 +1,52 @@
+{
+   "engine" : "GDBR Opportunity Engine",
+   "generated_from_schema" : 2,
+   "methodology" : {
+      "exceptional_requires_new_historical_low" : true,
+      "exceptional_threshold_percent" : -15,
+      "good_offer_threshold_percent" : -10,
+      "interesting_threshold_percent" : -5,
+      "minimum_observations_for_classification" : 5
+   },
+   "offers" : [
+      {
+         "change_vs_previous_average_percent" : null,
+         "change_vs_previous_percent" : null,
+         "current_price" : 699,
+         "decision_basis" : "dados_historicos_insuficientes",
+         "engine_version" : "1.0",
+         "evidence_level" : "insuficiente",
+         "historical_average" : 699,
+         "historical_max" : 699,
+         "historical_min" : 699,
+         "marketplace" : "amazon_br",
+         "marketplace_discount_claim" : null,
+         "observations" : 1,
+         "offer_id" : "GDBR-OFFER-001",
+         "opportunity_classification" : "historico_insuficiente",
+         "previous_average" : null,
+         "previous_price" : null,
+         "product" : "Painel LED Grow QB 120W"
+      },
+      {
+         "change_vs_previous_average_percent" : null,
+         "change_vs_previous_percent" : null,
+         "current_price" : 355.55,
+         "decision_basis" : "dados_historicos_insuficientes",
+         "engine_version" : "1.0",
+         "evidence_level" : "insuficiente",
+         "historical_average" : 355.55,
+         "historical_max" : 355.55,
+         "historical_min" : 355.55,
+         "marketplace" : "mercadolivre_br",
+         "marketplace_discount_claim" : 41,
+         "observations" : 1,
+         "offer_id" : "GDBR-OFFER-002",
+         "opportunity_classification" : "historico_insuficiente",
+         "previous_average" : null,
+         "previous_price" : null,
+         "product" : "Painel LED Grow Quantum Samsung LM281B 120W Dimmer"
+      }
+   ],
+   "version" : "1.0"
+}
