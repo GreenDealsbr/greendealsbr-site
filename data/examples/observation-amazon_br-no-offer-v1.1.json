@@ -1,0 +1,23 @@
+{
+   "commercial" : {
+      "availability" : "sem_oferta_destacada",
+      "currency" : "BRL"
+   },
+   "contract_version" : "1.1",
+   "links" : {
+      "affiliate_url" : "https://www.amazon.com.br/dp/B0GRCHBFX3?tag=greendealsbr-20",
+      "product_url" : "https://www.amazon.com.br/dp/B0GRCHBFX3"
+   },
+   "marketplace" : "amazon_br",
+   "observation_type" : "availability_only",
+   "observed_at" : "2026-08-28T16:59:21",
+   "offer_id" : "GDBR-OFFER-001",
+   "product_title" : "Painel LED Grow QB 120W",
+   "provenance" : {
+      "captured_at" : "2026-08-28T16:59:21",
+      "collector" : "manual_web_verified",
+      "confidence" : "observed",
+      "evidence" : "amazon_product_page_no_featured_offer"
+   },
+   "source" : "manual_web_verified_amazon"
+}

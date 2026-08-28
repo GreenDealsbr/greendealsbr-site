@@ -1,0 +1,58 @@
+{
+   "backward_compatible_with" : [
+      "1.0"
+   ],
+   "contract" : "GDBR Observation Contract",
+   "contract_version" : "1.1",
+   "observation_types" : {
+      "availability_only" : {
+         "description" : "Observacao valida sem preco disponivel.",
+         "price_policy" : "commercial.price must be omitted",
+         "required_fields" : [
+            "offer_id",
+            "marketplace",
+            "observed_at",
+            "source",
+            "commercial.currency",
+            "commercial.availability"
+         ],
+         "seller_policy" : "commercial.seller may be omitted"
+      },
+      "priced_offer" : {
+         "description" : "Observacao comercial com preco disponivel.",
+         "required_fields" : [
+            "offer_id",
+            "marketplace",
+            "observed_at",
+            "source",
+            "commercial.currency",
+            "commercial.price",
+            "commercial.availability",
+            "commercial.seller"
+         ]
+      }
+   },
+   "purpose" : "Permitir observacoes de oferta com preco e eventos comerciais sem preco, como ausencia de oferta destacada.",
+   "rules" : {
+      "allowed_observation_types" : [
+         "priced_offer",
+         "availability_only"
+      ],
+      "availability_only_price_must_be_absent" : true,
+      "availability_only_statuses" : [
+         "sem_oferta_destacada",
+         "fora_de_estoque",
+         "indisponivel"
+      ],
+      "invented_values" : "forbidden",
+      "marketplace_pattern" : "^[a-z0-9_]+$",
+      "marketplace_promotional_claims" : "observed_data_only_not_gdbr_validation",
+      "observed_at_formats" : [
+         "YYYY-MM-DD",
+         "YYYY-MM-DDTHH:MM:SS"
+      ],
+      "offer_id_pattern" : "^GDBR-OFFER-[0-9]{3,}$",
+      "preserve_last_known_price_history" : true,
+      "priced_offer_price_must_be_positive" : true
+   }
+}

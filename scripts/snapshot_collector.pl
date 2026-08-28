@@ -17,6 +17,7 @@ binmode STDOUT, ':encoding(UTF-8)';
         my $input_marketplace;
         my $input_currency;
 
+my $observation_type = 'priced_offer';
         my $offer_id;
 
 my $price;
@@ -117,10 +118,35 @@ if (defined $input_file) {
     # CONTRACT VERSION
     # --------------------------------------------------------
 
-    die "ERRO: contract_version deve ser 1.0\n"
+    die "ERRO: contract_version deve ser 1.0 ou 1.1\n"
+    unless
+    defined $input->{contract_version}
+    &&
+    (
+        $input->{contract_version} eq '1.0'
+        ||
+        $input->{contract_version} eq '1.1'
+    );
+
+
+if ($input->{contract_version} eq '1.1') {
+
+    $observation_type =
+        $input->{observation_type}
+        // '';
+
+    die "ERRO: observation_type invalido\n"
         unless
-        defined $input->{contract_version}
-        && $input->{contract_version} eq '1.0';
+        $observation_type eq 'priced_offer'
+        ||
+        $observation_type eq 'availability_only';
+
+} else {
+
+    $observation_type =
+        'priced_offer';
+}
+
 
 
     # --------------------------------------------------------
@@ -185,22 +211,47 @@ if (defined $input_file) {
         && length $c->{currency};
 
 
+    die "ERRO: commercial.availability ausente\n"
+    unless
+    defined $c->{availability}
+    && length $c->{availability};
+
+
+if ($observation_type eq 'priced_offer') {
+
     die "ERRO: commercial.price invalido\n"
         unless
         defined $c->{price}
         && $c->{price} > 0;
 
 
-    die "ERRO: commercial.availability ausente\n"
-        unless
-        defined $c->{availability}
-        && length $c->{availability};
-
-
     die "ERRO: commercial.seller ausente\n"
         unless
         defined $c->{seller}
         && length $c->{seller};
+
+} elsif ($observation_type eq 'availability_only') {
+
+    die "ERRO: commercial.price deve ser omitido em availability_only\n"
+        if exists $c->{price};
+
+
+    my %allowed_availability = map {
+        $_ => 1
+    } qw(
+        sem_oferta_destacada
+        fora_de_estoque
+        indisponivel
+    );
+
+
+    die "ERRO: availability invalida para availability_only\n"
+        unless
+        $allowed_availability{
+            $c->{availability}
+        };
+}
+
 
 
     if (
@@ -256,6 +307,8 @@ if (defined $input_file) {
     }
 
 
+    if ($observation_type eq 'priced_offer') {
+
     if (
         defined $price
         && (0 + $price) != (0 + $c->{price})
@@ -263,6 +316,15 @@ if (defined $input_file) {
 
         die "ERRO: --price conflita com commercial.price do input\n";
     }
+
+} elsif (
+    $observation_type eq 'availability_only'
+    && defined $price
+) {
+
+    die "ERRO: --price nao pode ser usado com availability_only\n";
+}
+
 
 
     if (
@@ -284,12 +346,14 @@ if (defined $input_file) {
 
 
     if (
-        defined $seller
-        && $seller ne $c->{seller}
-    ) {
+    defined $seller
+    && defined $c->{seller}
+    && $seller ne $c->{seller}
+) {
 
-        die "ERRO: --seller conflita com input\n";
-    }
+    die "ERRO: --seller conflita com input\n";
+}
+
 
 
     # --------------------------------------------------------
@@ -300,8 +364,15 @@ if (defined $input_file) {
         $contract_offer_id;
 
 
+    if (
+    $observation_type eq 'priced_offer'
+    && defined $c->{price}
+) {
+
     $price //=
         0 + $c->{price};
+}
+
 
 
     $observed_at //=
@@ -312,8 +383,12 @@ if (defined $input_file) {
         $c->{availability};
 
 
+    if (defined $c->{seller}) {
+
     $seller //=
         $c->{seller};
+}
+
 
 
     $source //=
@@ -485,12 +560,21 @@ fail("--offer obrigatorio")
     && length $offer_id;
 
 
-fail("--price obrigatorio")
-    unless defined $price;
+if ($observation_type eq 'priced_offer') {
+
+    fail("--price obrigatorio")
+        unless defined $price;
 
 
-fail("price deve ser maior que zero")
-    unless $price > 0;
+    fail("price deve ser maior que zero")
+        unless $price > 0;
+
+} elsif ($observation_type eq 'availability_only') {
+
+    fail("price deve estar ausente em availability_only")
+        if defined $price;
+}
+
 
 
 fail("--observed-at obrigatorio")
@@ -507,9 +591,14 @@ fail("--availability obrigatorio")
     && length $availability;
 
 
-fail("--seller obrigatorio")
-    unless defined $seller
-    && length $seller;
+if ($observation_type eq 'priced_offer') {
+
+    fail("--seller obrigatorio")
+        unless
+        defined $seller
+        && length $seller;
+}
+
 
 
 # ============================================================
@@ -622,6 +711,9 @@ my $history_file =
 
 my $snapshot = {
 
+    observation_type =>
+        $observation_type,
+
     offer_id =>
         $offer_id,
 
@@ -635,18 +727,30 @@ my $snapshot = {
         $offer->{commercial}->{currency}
         || 'BRL',
 
-    price =>
-        round2($price),
-
     availability =>
         $availability,
-
-    seller =>
-        $seller,
 
     source =>
         $source
 };
+
+
+if (
+    $observation_type eq 'priced_offer'
+    && defined $price
+) {
+
+    $snapshot->{price} =
+        round2($price);
+}
+
+
+if (defined $seller) {
+
+    $snapshot->{seller} =
+        $seller;
+}
+
 
 
 $snapshot->{price_from} =
@@ -723,30 +827,46 @@ if (-f $history_file) {
         next if $@;
 
 
-        if (
+        my $same_identity =
+    ($existing->{offer_id} // '')
+        eq $offer_id
+    &&
+    ($existing->{observed_at} // '')
+        eq $observed_at;
 
-            ($existing->{offer_id} // '')
-                eq $offer_id
 
-            &&
+next unless $same_identity;
 
-            ($existing->{observed_at} // '')
-                eq $observed_at
 
-            &&
+if ($observation_type eq 'priced_offer') {
 
-            defined $existing->{price}
+    if (
+        defined $existing->{price}
+        &&
+        defined $price
+        &&
+        (0 + $existing->{price})
+            == (0 + $price)
+    ) {
 
-            &&
+        $duplicate = 1;
+        last;
+    }
 
-            (0 + $existing->{price})
-                == (0 + $price)
+} elsif ($observation_type eq 'availability_only') {
 
-        ) {
+    if (
+        !defined $existing->{price}
+        &&
+        ($existing->{availability} // '')
+            eq ($availability // '')
+    ) {
 
-            $duplicate = 1;
-            last;
-        }
+        $duplicate = 1;
+        last;
+    }
+}
+
     }
 
 
@@ -821,9 +941,17 @@ print "Vendedor: ",
 
 print "\n--- NOVA OBSERVACAO ---\n";
 
-print "Preco: R\$ ",
-    sprintf("%.2f", $price),
-    "\n";
+if (defined $price) {
+
+    print "Preco: R\$ ",
+        sprintf("%.2f", $price),
+        "\n";
+
+} else {
+
+    print "Preco: N/D (evento sem preco)\n";
+}
+
 
 print "Observado em: ",
     $observed_at,
@@ -834,8 +962,9 @@ print "Disponibilidade: ",
     "\n";
 
 print "Vendedor: ",
-    $seller,
+    (defined $seller ? $seller : 'N/D'),
     "\n";
+
 
 print "Fonte: ",
     $source,
@@ -890,17 +1019,26 @@ print "A operacao podera alterar a camada oficial de dados.\n";
 # PREPARANDO ESTADO NOVO
 # ============================================================
 
-$offer->{commercial}->{price_observed} =
-    round2($price);
+if ($observation_type eq 'priced_offer') {
 
-$offer->{commercial}->{price_observed_at} =
-    $observed_at;
+    $offer->{commercial}->{price_observed} =
+        round2($price);
+
+    $offer->{commercial}->{price_observed_at} =
+        $observed_at;
+
+
+    if (defined $seller) {
+
+        $offer->{commercial}->{seller_observed} =
+            $seller;
+    }
+}
+
 
 $offer->{commercial}->{availability_observed} =
     $availability;
 
-$offer->{commercial}->{seller_observed} =
-    $seller;
 
 
 $offer->{tracking}->{last_checked_at} =
@@ -908,6 +1046,10 @@ $offer->{tracking}->{last_checked_at} =
 
 $offer->{tracking}->{last_collection_source} =
     $source;
+
+$offer->{tracking}->{last_observation_type} =
+    $observation_type;
+
 
 
 $offer->{history}->{last_snapshot_at} =
