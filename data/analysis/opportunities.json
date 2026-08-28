@@ -46,6 +46,25 @@
          "previous_average" : 355.55,
          "previous_price" : 355.55,
          "product" : "Painel LED Grow Quantum Samsung LM281B 120W Dimmer"
+      },
+      {
+         "change_vs_previous_average_percent" : null,
+         "change_vs_previous_percent" : null,
+         "current_price" : 338.35,
+         "decision_basis" : "dados_historicos_insuficientes",
+         "engine_version" : "1.0",
+         "evidence_level" : "insuficiente",
+         "historical_average" : 338.35,
+         "historical_max" : 338.35,
+         "historical_min" : 338.35,
+         "marketplace" : "shopee_br",
+         "marketplace_discount_claim" : null,
+         "observations" : 1,
+         "offer_id" : "GDBR-OFFER-003",
+         "opportunity_classification" : "historico_insuficiente",
+         "previous_average" : null,
+         "previous_price" : null,
+         "product" : "Painel LED Grow Quantum Samsung LM281B 120W Dimmer Cultivo"
       }
    ],
    "version" : "1.0"

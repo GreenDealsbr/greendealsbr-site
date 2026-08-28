@@ -303,6 +303,83 @@
             "last_collection_source" : "manual_web_verified_mercadolivre",
             "source" : "manual"
          }
+      },
+      {
+         "automation" : {
+            "current_manager" : "manual",
+            "future_owner" : "hermes",
+            "last_collector" : "snapshot_collector_v1"
+         },
+         "commercial" : {
+            "availability_observed" : "em_estoque",
+            "conditions" : {
+               "installment_total" : 414.72,
+               "installment_value" : 34.56,
+               "installments" : 12,
+               "installments_interest" : "com_juros",
+               "observed_price_condition" : "pix_com_cupom",
+               "price_without_coupon_observed" : 374.9
+            },
+            "currency" : "BRL",
+            "discount_percent_observed" : null,
+            "price_from_observed" : null,
+            "price_observed" : 338.35,
+            "price_observed_at" : "2026-08-28T20:02:52",
+            "seller_observed" : "sunnydayleds"
+         },
+         "data_quality" : {
+            "minimum_commercial_data_complete" : true
+         },
+         "history" : {
+            "last_snapshot_at" : "2026-08-28T20:02:52",
+            "price_history_file" : "data/history/GDBR-OFFER-003.jsonl",
+            "snapshot_source" : "manual_web_verified_shopee"
+         },
+         "id" : "GDBR-OFFER-003",
+         "links" : {
+            "affiliate_url" : "https://s.shopee.com.br/9fKSgFRG25",
+            "product_url" : "https://shopee.com.br/Painel-Led-Grow-Quantum-Samsung-Lm281b-120w-Dimmer-Cultivo-i.392075265.23898839878"
+         },
+         "marketplace" : {
+            "code" : "shopee_br",
+            "name" : "Shopee Brasil"
+         },
+         "marketplace_metrics" : {
+            "rating_observed" : 5,
+            "reviews_observed" : 2,
+            "shipping_origin_observed" : "Sao Paulo, SP",
+            "sold_quantity_observed" : 15,
+            "stock_available_observed" : 93
+         },
+         "presentation" : {
+            "marketplace_specific_data" : true,
+            "price_component" : "offer-price-panel",
+            "template" : "shopee_compact_v1"
+         },
+         "product" : {
+            "category" : "iluminacao",
+            "listing_id" : "23898839878",
+            "listing_title" : "Painel Led Grow Quantum Samsung Lm281b 120w Dimmer Cultivo",
+            "model_id" : "189178694899",
+            "shop_id" : "392075265",
+            "subcategory" : "painel_led",
+            "title" : "Painel LED Grow Quantum Samsung LM281B 120W Dimmer Cultivo"
+         },
+         "source" : "manual",
+         "specifications" : {
+            "chipset_declared" : "Samsung LM281B",
+            "dimmer" : true,
+            "power_watts_declared" : 120
+         },
+         "status" : "active",
+         "tracking" : {
+            "affiliate_link_validated_at" : "2026-08-28T20:02:52",
+            "affiliate_link_validation_result" : "ok",
+            "affiliate_tracking_label" : "GDBR-SITE-OFFER003-OFERTAS-LED120W",
+            "last_checked_at" : "2026-08-28T20:02:52",
+            "last_collection_source" : "manual_web_verified_shopee",
+            "last_observation_type" : "priced_offer"
+         }
       }
    ],
    "schema_version" : 2,
